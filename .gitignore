@@ -1,0 +1,6 @@
+.metadata/
+aims/.settings/
+aims/.classpath
+aims/.project
+
+aims/bin/
