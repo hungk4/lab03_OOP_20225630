@@ -1,0 +1,7 @@
+java 22.0.2
+
+6.1
+-	What happens if users choose “Cancel”?
+  --> Mỗi lần phải chạy ứng dụng phải lưu thủ công ( Ctrl + s)
+-	How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do” and “I don’t” (Suggestion: Use Javadocs or using Eclipse/Netbean IDE help). 
+ --> dùng JOptionPane.showOptionDialog() thay cho JOptionPane.showConfirmDialog
