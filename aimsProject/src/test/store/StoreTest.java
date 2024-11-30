@@ -1,8 +1,8 @@
 package test.store;
 
-import store.Store;
-import cart.Cart;
-import disc.DigitalVideoDisc;
+import aims.cart.Cart;
+import aims.media.DigitalVideoDisc;
+import aims.store.Store;
 
 public class StoreTest {
 	public static void main(String[] args) {

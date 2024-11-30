@@ -1,7 +1,7 @@
-package cart;
+package aims.cart;
 import java.util.ArrayList;
 
-import disc.DigitalVideoDisc;
+import aims.media.DigitalVideoDisc;
 public class Cart {
 	  public static final int MAX_NUMBERS_ORDERED = 20;
 	  private ArrayList<DigitalVideoDisc> dvds ;
