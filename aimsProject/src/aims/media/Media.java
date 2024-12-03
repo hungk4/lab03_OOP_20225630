@@ -8,6 +8,11 @@ public abstract class Media {
 	public Media() {
 		// TODO Auto-generated constructor stub
 	}
+    public Media(String title, float cost) {
+        this.title = title;
+        this.cost = cost;
+    }
+    
 	public int getId() {
 		return id;
 	}
@@ -32,5 +37,9 @@ public abstract class Media {
 	public void setCost(float cost) {
 		this.cost = cost;
 	}
+	
+    public String toString() {
+        return title + " - $" + cost;
+    }
 
 }

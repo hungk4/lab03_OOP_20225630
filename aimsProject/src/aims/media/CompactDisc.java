@@ -8,6 +8,10 @@ public class CompactDisc extends Disc implements Playable{
 	public CompactDisc() {
 		// TODO Auto-generated constructor stub
 	}
+    public CompactDisc(String title, float cost) {
+        super(title, cost);
+    }
+
 	public String getArtist() {
 		return artist;
 	}

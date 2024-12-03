@@ -1,6 +1,5 @@
 package test.store;
 
-import aims.cart.Cart;
 import aims.media.DigitalVideoDisc;
 import aims.store.Store;
 
@@ -12,10 +11,10 @@ public class StoreTest {
 	    DigitalVideoDisc dvd2 = new DigitalVideoDisc("Naruto", "Anime", "Kishimoto", 20, 2);
 	    DigitalVideoDisc dvd3 = new DigitalVideoDisc("Goku", "Action", "Toriyama", 22, 3);
 
-	    store.addDVD(dvd1);
-	    store.addDVD(dvd2);
-	    store.addDVD(dvd3);
-		store.removeDVD(dvd3);
+	    store.addMedia(dvd1);
+	    store.addMedia(dvd2);
+	    store.addMedia(dvd3);
+		store.removeMedia(dvd3);
 
 		
 	}

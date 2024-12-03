@@ -2,33 +2,30 @@ package aims.store;
 
 import java.util.ArrayList;
 
-import aims.media.DigitalVideoDisc;
+import aims.media.Media;
 
 public class Store {
-	  public static final int MAX_NUMBERS_ORDERED = 20;
-	  private ArrayList<DigitalVideoDisc> itemsInStore ;
+	  public static int maxOrdered = 20;
+	  private ArrayList<Media> itemsInStore ;
 	  
 	  public Store(){
-		  itemsInStore = new ArrayList<>();
+		  itemsInStore = new ArrayList<Media>();
 	  }
 
-	  public void addDVD(DigitalVideoDisc disc){
-	    if(itemsInStore.size() < MAX_NUMBERS_ORDERED){
-	    	itemsInStore.add(disc);
-	      System.out.println("Them thanh cong DVD vao gio hang");
-	    } else {
-	      System.out.println("Gio hang het cho trong");
-	    }
+	  public void addMedia(Media media) {
+		  if(itemsInStore.size() < maxOrdered) {
+			  itemsInStore.add(media);
+			  System.out.println("them thanh cong " + media.getTitle());;
+		  } else {
+			  System.out.println("gio hang da day");
+		  }
 	  }
 	  
-	  public void removeDVD(DigitalVideoDisc disc){
-		    for(int i = 0; i < itemsInStore.size(); i++){
-		      if(itemsInStore.get(i).equals(disc)){
-		    	  itemsInStore.remove(i);
-		        System.out.println("Da xoa thanh cong");
-		        return;
-		      }
+	  public void removeMedia(Media media) {
+		    if (itemsInStore.remove(media)) {
+		        System.out.println("Xoa thanh công: " + media.getTitle());
+		    } else {
+		        System.out.println("Khong tim thay media can xóa.");
 		    }
-		    System.out.println("Khong tim thay DVD trong gio hang");
-	} 
+	}  
 }

@@ -7,9 +7,12 @@ public class Book extends Media {
 	private List<String> authors = new ArrayList<String>();
 	
 	public Book() {
-		
 	}
-
+	
+    public Book(String title, float cost) {
+        super(title, cost);
+    }
+    
 	public void addAuthor(String authorName) {
 		if(authors.contains(authorName)) {
 			System.out.println("Da ton tai "+ authorName + " trong danh sach");
