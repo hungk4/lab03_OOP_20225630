@@ -1,5 +1,6 @@
 package aims.cart;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import aims.media.Media;
 public class Cart {
@@ -13,7 +14,7 @@ public class Cart {
                 itemsOrdered.add(media);
                 System.out.println("Thêm thành công " + media.getTitle());
             } else {
-                System.out.println("Khong them duoc do Media đã có trong giỏ hàng.");
+                System.out.println("Không thêm được do Media đã có trong giỏ hàng.");
             }
         } else {
             System.out.println("Giỏ hàng đã đầy");
@@ -24,7 +25,7 @@ public class Cart {
 		    if (itemsOrdered.remove(media)) {
 		        System.out.println("Xoa thanh công: " + media.getTitle());
 		    } else {
-		        System.out.println("Khong tim thay media can xóa.");
+		        System.out.println("Không tìmm thấy media cần xóa.");
 		    }
 	}  
 
@@ -36,13 +37,6 @@ public class Cart {
 	    return totalCost;
 	  }
 
-	  public void print(){
-	    System.out.println("Gio hang: ");
-	    for(Media media : itemsOrdered) {
-	    	System.out.println(media.toString());
-	    }
-	    System.out.println("Total cost: $" + totalCost());
-	  }
 	  
 //	  public void searchById(int id) {
 //		  for(DigitalVideoDisc dvd : dvds) {
@@ -64,6 +58,25 @@ public class Cart {
 //		  }
 //		System.out.println("ko tim thay dvd co title = " + title);
 //	  }
+	  
+	    // Sort by title then cost
+	    public void sortByTitleCost() {
+	        Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+	        System.out.println("Sorted by title, then cost.");
+	    }
+
+	    // Sort by cost then title
+	    public void sortByCostTitle() {
+	        Collections.sort(itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+	        System.out.println("Sorted by cost, then title.");
+	    }
+
+	    public void print() {
+	        System.out.println("Gio hang :");
+	        for (Media media : itemsOrdered) {
+	            System.out.println(media.toString());
+	        }
+	    }
 	    
 }
 

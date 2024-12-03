@@ -18,5 +18,9 @@ public class Disc extends Media {
 	public int getLength() {
 		return length;
 	}
+	@Override
+	public String toString() {
+		return "DVD: " + this.getTitle() + ", Director: " + this.director + ", Length: " + length + " mins, Cost: $" + this.getCost();
+	}
 
 }

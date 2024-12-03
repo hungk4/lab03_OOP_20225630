@@ -12,13 +12,12 @@ public class DigitalVideoDisc extends Disc implements Playable {
         super(title, cost);
     }
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+        super(title, cost);
         nbDigitalVideoDiscs++;
         this.setId(nbDigitalVideoDiscs);
-        this.setTitle(title);
         this.setCategory(category);
         this.director = director;
         this.length = length;
-        this.setCost(cost);
     }
 	
 	/////////
@@ -37,11 +36,11 @@ public class DigitalVideoDisc extends Disc implements Playable {
 	 }	
 	
 	// in thong tin DVD
-//	public String toString() {
-//		return "DVD - " + this.getTitle() + " - " + this.getCategory() + " - " 
-//				+ this.director + " - "+ this.length + " minutes: " 
-//				+ this.getCost() + "$";
-//	}
+	public String toString() {
+		return "DVD: " + this.getTitle() + ", category:  " + this.getCategory() + ", diretor: " 
+				+ this.director + ", length: "+ this.length + " minutes, " 
+				+ this.getCost() + "$";
+	}
 	
 	// check title
 	public boolean isMatch(String title) {

@@ -1,2 +1,24 @@
-1. Is JAVA a Pass by Value or a Pass by Reference programming language? 
-	--> Pass by Value
+-	What class should implement the Comparable interface?
+	--> lop Media
+-	In those classes, how should you implement the compareTo()method be to reflect the ordering that we want?
+	--> Sắp xếp theo tiêu đề rồi đến giá:
+	--> Sắp xếp theo giá rồi đến tiêu đề
+-	Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+	--> Không, với Comparable, chỉ có một quy tắc sắp xếp duy nhất trong mỗi lớp. 
+-	Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+@Override
+public int compareTo(Media other) {
+    if (other instanceof DigitalVideoDisc) {
+        DigitalVideoDisc dvd = (DigitalVideoDisc) other;
+        int titleComparison = this.getTitle().compareTo(dvd.getTitle());
+        if (titleComparison != 0) {
+            return titleComparison;
+        }
+        int lengthComparison = Integer.compare(dvd.getLength(), this.getLength()); // decreasing length
+        if (lengthComparison != 0) {
+            return lengthComparison;
+        }
+        return Float.compare(this.getCost(), dvd.getCost());
+    }
+    return this.getTitle().compareTo(other.getTitle());
+}

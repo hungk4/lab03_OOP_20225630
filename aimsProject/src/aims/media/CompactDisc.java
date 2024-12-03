@@ -11,6 +11,12 @@ public class CompactDisc extends Disc implements Playable{
     public CompactDisc(String title, float cost) {
         super(title, cost);
     }
+    
+    public CompactDisc(String title, float cost, String artist) {
+        super(title, cost);
+        this.artist = artist;
+        this.tracks = new ArrayList<>();
+    }
 
 	public String getArtist() {
 		return artist;
@@ -56,5 +62,10 @@ public class CompactDisc extends Disc implements Playable{
 			track.play();
 		}
 	}
+	
+    @Override
+    public String toString() {
+        return "CD: " + this.getTitle() + ", Artist: " + artist + ", Cost: $" + this.getCost();
+    }
 
 }

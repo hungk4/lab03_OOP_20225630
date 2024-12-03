@@ -1,5 +1,7 @@
 package aims.media;
 
+import java.util.Comparator;
+
 public abstract class Media {
 	private int id;
 	private String title;
@@ -13,7 +15,25 @@ public abstract class Media {
         this.cost = cost;
     }
     
-	public int getId() {
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) {
+			return true;
+		}
+		if(obj == null || !(obj instanceof Media)) {
+			return false;
+		}
+		
+		Media media = (Media) obj;
+		return this.title.equals(media.title);
+	}
+    public abstract String toString();
+ // Comparator instances for sorting by title + cost, or cost + title
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new CompareByTitleCost();
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new CompareByCostTitle();
+    
+	
+    public int getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -38,22 +58,6 @@ public abstract class Media {
 		this.cost = cost;
 	}
 	
-	@Override
-	public boolean equals(Object obj) {
-		if(this == obj) {
-			return true;
-		}
-		if(obj == null || !(obj instanceof Media)) {
-			return false;
-		}
-		
-		Media media = (Media) obj;
-		return this.title.equals(media.title);
-	}
-    public String toString() {
-        return title + " - $" + cost;
-    }
-    
     
 
 }
