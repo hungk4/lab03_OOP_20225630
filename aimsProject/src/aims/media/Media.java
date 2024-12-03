@@ -13,6 +13,7 @@ public abstract class Media {
         this.cost = cost;
     }
     
+    
 	public int getId() {
 		return id;
 	}
@@ -38,8 +39,14 @@ public abstract class Media {
 		this.cost = cost;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		
+	}
     public String toString() {
         return title + " - $" + cost;
     }
+    
+    
 
 }
