@@ -13,7 +13,6 @@ public abstract class Media {
         this.cost = cost;
     }
     
-    
 	public int getId() {
 		return id;
 	}
@@ -41,7 +40,15 @@ public abstract class Media {
 	
 	@Override
 	public boolean equals(Object obj) {
+		if(this == obj) {
+			return true;
+		}
+		if(obj == null || !(obj instanceof Media)) {
+			return false;
+		}
 		
+		Media media = (Media) obj;
+		return this.title.equals(media.title);
 	}
     public String toString() {
         return title + " - $" + cost;

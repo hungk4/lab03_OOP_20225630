@@ -7,14 +7,18 @@ public class Cart {
 	  private ArrayList<Media> itemsOrdered = new ArrayList<Media>() ;
 	  
 	  
-	  public void addMedia(Media media) {
-		  if(itemsOrdered.size() < maxOrdered) {
-			  itemsOrdered.add(media);
-			  System.out.println("them thanh cong " + media.getTitle());;
-		  } else {
-			  System.out.println("gio hang da day");
-		  }
-	  }
+    public void addMedia(Media media) {
+        if (itemsOrdered.size() < maxOrdered) {
+            if (!itemsOrdered.contains(media)) {
+                itemsOrdered.add(media);
+                System.out.println("Thêm thành công " + media.getTitle());
+            } else {
+                System.out.println("Khong them duoc do Media đã có trong giỏ hàng.");
+            }
+        } else {
+            System.out.println("Giỏ hàng đã đầy");
+        }
+    }
 	  
 	  public void removeMedia(Media media) {
 		    if (itemsOrdered.remove(media)) {
