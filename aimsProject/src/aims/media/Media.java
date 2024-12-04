@@ -7,6 +7,12 @@ public abstract class Media {
 	private String title;
 	private String category;
 	private float cost;
+	
+    public abstract String toString();
+    
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new CompareByTitleCost();
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new CompareByCostTitle();
+    
 	public Media() {
 		// TODO Auto-generated constructor stub
 	}
@@ -27,10 +33,12 @@ public abstract class Media {
 		Media media = (Media) obj;
 		return this.title.equals(media.title);
 	}
-    public abstract String toString();
- // Comparator instances for sorting by title + cost, or cost + title
-    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new CompareByTitleCost();
-    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new CompareByCostTitle();
+	
+	
+	// check title
+	public boolean isMatch(String title) {
+		return this.getTitle().equals(title);
+	}
     
 	
     public int getId() {

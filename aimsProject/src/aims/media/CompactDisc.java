@@ -12,7 +12,7 @@ public class CompactDisc extends Disc implements Playable{
         super(title, cost);
     }
     
-    public CompactDisc(String title, float cost, String artist) {
+    public CompactDisc(String title, String artist, float cost) {
         super(title, cost);
         this.artist = artist;
         this.tracks = new ArrayList<>();
@@ -33,14 +33,14 @@ public class CompactDisc extends Disc implements Playable{
 			System.out.println("Da ton tai track trong danh sach");
 		} else {
 			tracks.add(track);
-			System.out.println("Da them: " + track);
+//			System.out.println("Da them track: " + track.getTitle());
 		}
 	}
 	
 	public void removeTrack(Track track) {
 		if(tracks.contains(track)) {
 			tracks.remove(track);
-			System.out.println("Da xoa " + track);
+			System.out.println("Da xoa track: " + track);
 		} else {
 			System.out.println("Ko ton tai " +  track);
 		}

@@ -37,15 +37,11 @@ public class DigitalVideoDisc extends Disc implements Playable {
 	
 	// in thong tin DVD
 	public String toString() {
-		return "DVD: " + this.getTitle() + ", category:  " + this.getCategory() + ", diretor: " 
+		return "DVD: " + this.getTitle() + ", category: " + this.getCategory() + ", diretor: " 
 				+ this.director + ", length: "+ this.length + " minutes, " 
 				+ this.getCost() + "$";
 	}
 	
-	// check title
-	public boolean isMatch(String title) {
-		return this.getTitle().equals(title);
-	}
    
 	@Override
 	public void play() {
