@@ -8,19 +8,19 @@ public class Cart {
 	  private ArrayList<Media> itemsOrdered = new ArrayList<Media>() ;
 	  
 	  
-    public void addMedia(Media media) {
-        if (itemsOrdered.size() < maxOrdered) {
-            if (!itemsOrdered.contains(media)) {
-                itemsOrdered.add(media);
-                System.out.println("Thêm thành công " + media.getTitle());
-            } else {
-                System.out.println("Không thêm được do Media đã có trong giỏ hàng.");
-            }
-        } else {
-            System.out.println("Giỏ hàng đã đầy");
-        }
-    }
-	  
+	  public void addMedia(Media media) {
+	        if (itemsOrdered.size() < maxOrdered) {
+	            if (!itemsOrdered.contains(media)) {
+	                itemsOrdered.add(media);
+	                System.out.println("Thêm thành công " + media.getTitle());
+	            } else {
+	                System.out.println("Không thêm được do Media đã có trong giỏ hàng.");
+	            }
+	        } else {
+	            System.out.println("Giỏ hàng đã đầy");
+	        }
+	  }
+		  
 	  public void removeMedia(Media media) {
 		    if (itemsOrdered.remove(media)) {
 		        System.out.println("Xoa thanh công: " + media.getTitle());
@@ -76,6 +76,10 @@ public class Cart {
 	        for (Media media : itemsOrdered) {
 	            System.out.println(media.toString());
 	        }
+	    }
+	    
+	    public int numberOfMedia() {
+	    	return itemsOrdered.size();
 	    }
 	    
 }
