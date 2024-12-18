@@ -19,34 +19,43 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import aims.cart.Cart;
 import aims.media.Media;
 import aims.store.Store;
 
 public class StoreScreen extends JFrame{
 	private Store store;
+	private Cart cart;
 	
 	public StoreScreen(Store store) {
 		this.store = store;
+		this.cart = store.getCart();
 		Container container = getContentPane();
 		container.setLayout(new BorderLayout());
 		
-		container.add(createNorth(), BorderLayout.NORTH);
-		container.add(createCenter(), BorderLayout.CENTER);
+		container.add(createNorth(), BorderLayout.NORTH); // phan tren cung: hien thi menu va tieu de
+		container.add(createCenter(), BorderLayout.CENTER); // phan chinh giua: hien thi danh sach cac san pham
 		
 		setVisible(true);
 		setTitle("Store");
-		setSize(1024, 768);
+		setSize(650, 650);
 		
 	}
 	
+// 	Phần phía trên của cửa sổ bao gồm:
+//	Thanh menu: (tạo bởi createMenuBar)
+//	Tiêu đề và nút "View Cart": (tạo bởi createHeader)
 	JPanel createNorth() {
 		JPanel north = new JPanel();
-		north.setLayout(new BoxLayout(north, BoxLayout.Y_AXIS));
+		north.setLayout(new BoxLayout(north, BoxLayout.Y_AXIS)); // Sắp xếp theo chiều dọc
 		north.add(createMenuBar());
 		north.add(createHeader());
 		return north;
 	}
 	
+// 	Menu chính Options:
+//	Update Store: Có thể thêm sách, CD, DVD (hiện chỉ là menu tĩnh).
+//	View Store và View Cart: Các lựa chọn khác.
 	JMenuBar createMenuBar() {
 		JMenu menu = new JMenu("Options");
 		
@@ -66,8 +75,8 @@ public class StoreScreen extends JFrame{
 		return menuBar;		
 	}
 	
+// 	Hiển thị tiêu đề "AIMS" và nút "View Cart" ở góc phải trên.
 	JPanel createHeader() {
-		
 		JPanel header = new JPanel();
 		header.setLayout(new BoxLayout(header, BoxLayout.X_AXIS));
 		
@@ -88,7 +97,8 @@ public class StoreScreen extends JFrame{
 		
 		return header;
 	}
-	
+// 	Hiển thị danh sách các sản phẩm trong cửa hàng bằng cách sử dụng một GridLayout (lưới). 
+//	Mỗi ô trong lưới được hiển thị bằng một MediaStore.	
 	JPanel createCenter() {
 		JPanel center = new JPanel();
 		center.setLayout(new GridLayout(3, 3, 2, 2));
@@ -96,7 +106,7 @@ public class StoreScreen extends JFrame{
 		ArrayList<Media> mediaInStore = store.getItemsInStore();
 		int limit = Math.min(mediaInStore.size(), 9); // Chỉ hiển thị tối đa 9 sản phẩm
 		for(int i = 0; i < limit; i++) {
-			MediaStore cell = new MediaStore(mediaInStore.get(i));
+			MediaStore cell = new MediaStore(mediaInStore.get(i), cart);
 			center.add(cell);
 		}
 		return center;
