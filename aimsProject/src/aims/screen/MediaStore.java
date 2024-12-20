@@ -60,7 +60,7 @@ public class MediaStore extends JPanel {
 					playDialog.setSize(400, 300);
 					
 					// noi dung dialog
-					JLabel playLabel = new JLabel(media.getTitle() + "is playing .................");
+					JLabel playLabel = new JLabel(media.getTitle() + " is playing .................");
 					playLabel.setFont(new Font(playLabel.getFont().getName(), Font.PLAIN, 20));
 					playLabel.setHorizontalAlignment(JLabel.CENTER);
 					
