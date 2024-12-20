@@ -10,8 +10,6 @@ module aims {
 	requires javafx.controls;
     requires javafx.fxml;
     
-
-    exports javafx;
     exports test2; 
 	
 }
