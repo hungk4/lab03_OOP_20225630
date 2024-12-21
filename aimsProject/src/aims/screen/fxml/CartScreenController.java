@@ -1,4 +1,5 @@
 package aims.screen.fxml;
+import javafx.event.ActionEvent; // Đúng package
 import aims.cart.Cart;
 import aims.media.Media;
 import aims.media.Playable;
@@ -50,6 +51,7 @@ public class CartScreenController {
     	btnPlay.setVisible(false);
     	btnRemove.setVisible(false);
     	
+    	
     	tblMedia.getSelectionModel().selectedItemProperty().addListener(
     			new ChangeListener<Media>() {
     				
@@ -70,6 +72,12 @@ public class CartScreenController {
     	} else {
     		btnPlay.setVisible(false);
     	}
+    }
+    
+    @FXML
+    void btnRemovePressed(ActionEvent event) {
+    	Media media = tblMedia.getSelectionModel().getSelectedItem();
+    	cart.removeMedia(media);
     }
 
 }
