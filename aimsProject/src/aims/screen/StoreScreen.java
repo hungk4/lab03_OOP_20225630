@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 
 import aims.cart.Cart;
 import aims.media.Media;
+import aims.screen.fxml.CartScreen;
 import aims.store.Store;
 
 public class StoreScreen extends JFrame{
@@ -84,14 +85,19 @@ public class StoreScreen extends JFrame{
 		title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 50));
 		title.setForeground(Color.CYAN);
 		
-		JButton cart = new JButton("View Cart");
-		cart.setPreferredSize(new Dimension(100, 50));
-		cart.setMaximumSize(new Dimension(100, 50));
+		JButton cartButton = new JButton("View Cart");
+		cartButton.setPreferredSize(new Dimension(100, 50));
+		cartButton.setMaximumSize(new Dimension(100, 50));
+		
+		// mo giao dien Cart khi an vao viewCart
+		cartButton.addActionListener(e -> {
+			new CartScreen(cart);
+		});
 		
 		header.add(Box.createRigidArea(new Dimension(10, 10)));
 		header.add(title);
 		header.add(Box.createHorizontalGlue());
-		header.add(cart);
+		header.add(cartButton);
 		header.add(Box.createRigidArea(new Dimension(10, 10)));
 			
 		

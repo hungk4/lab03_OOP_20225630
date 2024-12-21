@@ -1,13 +1,16 @@
 package aims.cart;
-import java.util.ArrayList;
 import java.util.Collections;
 
 import aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 public class Cart {
 	  private int maxOrdered = 20;
-	  private ArrayList<Media> itemsOrdered = new ArrayList<Media>() ;
+	  private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 	  
-	  
+	  public ObservableList<Media> getItemsOrdered() {
+	        return itemsOrdered;
+	  }
 	  public void addMedia(Media media) {
 	        if (itemsOrdered.size() < maxOrdered) {
 	            if (!itemsOrdered.contains(media)) {

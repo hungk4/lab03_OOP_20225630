@@ -9,6 +9,5 @@ public class Aims {
 		// TODO Auto-generated method stub
 		Store store = new Store();
         new StoreScreen(store);
-
 	}
 }
