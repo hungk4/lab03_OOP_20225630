@@ -11,6 +11,9 @@ public class Cart {
 	  public ObservableList<Media> getItemsOrdered() {
 	        return itemsOrdered;
 	  }
+	  public void clear() {
+	        itemsOrdered.clear();
+	   }
 	  public void addMedia(Media media) {
 	        if (itemsOrdered.size() < maxOrdered) {
 	            if (!itemsOrdered.contains(media)) {

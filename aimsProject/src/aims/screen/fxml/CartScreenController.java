@@ -1,12 +1,17 @@
 package aims.screen.fxml;
-import javafx.event.ActionEvent; // Đúng package
 import aims.cart.Cart;
 import aims.media.Media;
 import aims.media.Playable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ListChangeListener.Change;
+import javafx.event.ActionEvent; // Đúng package
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button; // Thêm dòng này
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,7 +25,13 @@ public class CartScreenController {
 
     @FXML
     private Button btnRemove;
-
+    
+    @FXML
+    private Button btnPlace;
+    
+    @FXML
+    private Label lblTotalCost;
+    
     @FXML
     private TableView<Media> tblMedia;
 
@@ -63,6 +74,14 @@ public class CartScreenController {
     					}
     				}
     			});
+    	cart.getItemsOrdered().addListener(new ListChangeListener<Media>() {
+    		 @Override
+             public void onChanged(Change<? extends Media> change) {
+                 updateTotalCost();
+             }
+
+    	});
+    	updateTotalCost();
     }
     
     void updateButtonBar(Media media) {
@@ -79,5 +98,38 @@ public class CartScreenController {
     	Media media = tblMedia.getSelectionModel().getSelectedItem();
     	cart.removeMedia(media);
     }
+    
+    @FXML
+    void btnPlacePressed(ActionEvent event) {
+        double totalCost = 0;
+        
+        // Tính tổng chi phí từ các sản phẩm trong giỏ hàng
+        for (Media media : cart.getItemsOrdered()) {
+            totalCost += media.getCost(); // Giả sử mỗi Media có phương thức getCost()
+        }
+        
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Order Success");
+    	alert.setHeaderText("Total: $" + String.format("%.2f", totalCost));
+    	alert.setContentText("Thank you for buying !!");
+    	
+    	alert.showAndWait();
+    	
+    	cart.clear();
+    	
+    }
+    
+    private void updateTotalCost() {
+        double totalCost = 0;
+        
+        // Tính tổng chi phí từ các sản phẩm trong giỏ hàng
+        for (Media media : cart.getItemsOrdered()) {
+            totalCost += media.getCost(); // Giả sử mỗi Media có phương thức getCost()
+        }
+
+        // Cập nhật label với tổng chi phí mới
+        lblTotalCost.setText("$" + String.format("%.2f", totalCost));
+    }
+    
 
 }
