@@ -17,14 +17,18 @@ import javax.swing.JPanel;
 import aims.cart.Cart;
 import aims.media.Media;
 import aims.media.Playable;
+import aims.screen.fxml.CartScreenController;
 
 // MediaStore là lớp con của JPanel, 
 // được sử dụng để hiển thị thông tin của một sản phẩm trong cửa hàng.
 public class MediaStore extends JPanel {
 	private Media media;
+	private Cart cart;
 	
 	public MediaStore(Media media, Cart cart) {
 		this.media = media; // // Lưu thông tin sản phẩm
+		this.cart = cart;
+	    
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // // Sắp xếp theo chiều dọc
 		
 		JLabel title = new JLabel(media.getTitle());
@@ -43,12 +47,13 @@ public class MediaStore extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cart.addMedia(media);
+				 // Cập nhật lại total cost
 				cart.print();
 			}
 		});
 		container.add(addToCartButton);
 //		container.add(new JButton("Add to cart"));
-		
+	
 		if(media instanceof Playable) {
 			JButton playButton = new JButton("Play");
 			playButton.addActionListener(new ActionListener() {

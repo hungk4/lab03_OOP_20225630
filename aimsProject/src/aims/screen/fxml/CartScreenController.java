@@ -62,7 +62,8 @@ public class CartScreenController {
     	btnPlay.setVisible(false);
     	btnRemove.setVisible(false);
     	
-    	
+    	updateTotalCost(); 
+    	 
     	tblMedia.getSelectionModel().selectedItemProperty().addListener(
     			new ChangeListener<Media>() {
     				
@@ -74,14 +75,15 @@ public class CartScreenController {
     					}
     				}
     			});
-    	cart.getItemsOrdered().addListener(new ListChangeListener<Media>() {
-    		 @Override
+    	 cart.getItemsOrdered().addListener(new ListChangeListener<Media>() {
+             @Override
              public void onChanged(Change<? extends Media> change) {
                  updateTotalCost();
              }
+         });
 
-    	});
-    	updateTotalCost();
+         // Cập nhật giá trị tổng chi phí lần đầu tiên khi giỏ hàng được khởi tạo
+         updateTotalCost();
     }
     
     void updateButtonBar(Media media) {
@@ -103,9 +105,8 @@ public class CartScreenController {
     void btnPlacePressed(ActionEvent event) {
         double totalCost = 0;
         
-        // Tính tổng chi phí từ các sản phẩm trong giỏ hàng
         for (Media media : cart.getItemsOrdered()) {
-            totalCost += media.getCost(); // Giả sử mỗi Media có phương thức getCost()
+            totalCost += media.getCost(); 
         }
         
     	Alert alert = new Alert(AlertType.INFORMATION);
@@ -119,17 +120,18 @@ public class CartScreenController {
     	
     }
     
-    private void updateTotalCost() {
+    public void updateTotalCost() {
         double totalCost = 0;
         
         // Tính tổng chi phí từ các sản phẩm trong giỏ hàng
         for (Media media : cart.getItemsOrdered()) {
-            totalCost += media.getCost(); // Giả sử mỗi Media có phương thức getCost()
+            totalCost += media.getCost(); 
         }
 
         // Cập nhật label với tổng chi phí mới
         lblTotalCost.setText("$" + String.format("%.2f", totalCost));
     }
+    
     
 
 }

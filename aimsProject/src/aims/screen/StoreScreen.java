@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import aims.cart.Cart;
 import aims.media.Media;
 import aims.screen.fxml.CartScreen;
+import aims.screen.fxml.CartScreenController;
 import aims.store.Store;
 
 public class StoreScreen extends JFrame{
@@ -31,6 +32,7 @@ public class StoreScreen extends JFrame{
 	public StoreScreen(Store store) {
 		this.store = store;
 		this.cart = store.getCart();
+		
 		Container container = getContentPane();
 		container.setLayout(new BorderLayout());
 		
