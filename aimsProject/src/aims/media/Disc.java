@@ -8,7 +8,7 @@ public class Disc extends Media {
 		// TODO Auto-generated constructor stub
 	}
     public Disc(String title, float cost) {
-        super(title, cost);
+        super(title, "music",cost);
     }
 
 	public String getDirector() {

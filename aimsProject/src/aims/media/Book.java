@@ -7,10 +7,10 @@ public class Book extends Media {
 	}
 	
     public Book(String title, float cost) {
-        super(title, cost);
+        super(title, "", cost);
     }
-    public Book(String title,  String author, float cost) {
-        super(title, cost);
+    public Book(String title, String category, String author, float cost) {
+        super(title, category, cost);
         this.author = author;
     }
     

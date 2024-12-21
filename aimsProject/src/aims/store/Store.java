@@ -26,10 +26,10 @@ public class Store {
 	        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Doreamon", "shounen", "xyz", 20, 18.99f);
 	        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Goku", "shounen", "xyz", 20, 25.99f);
 	        
-	        Book book1 = new Book("Java Programming", "James Gosling", 29.99f);
-	        Book book2 = new Book("C++", "manh hung", 29.99f);
-	        Book book3 = new Book("Python", "manh hung", 29.99f);
-	        Book book4 = new Book("C", "manh hung", 40f);
+	        Book book1 = new Book("Java Programming","IT" ,"James Gosling", 29.99f);
+	        Book book2 = new Book("C++", "IT", "manh hung", 29.99f);
+	        Book book3 = new Book("Python","IT", "manh hung", 29.99f);
+	        Book book4 = new Book("C","IT", "manh hung", 40f);
 	        
 	        Track track1 = new Track("Intro", 3);
 	        Track track2 = new Track("Main", 5);
