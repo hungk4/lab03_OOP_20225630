@@ -12,13 +12,13 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import aims.cart.Cart;
 import aims.exception.PlayerException;
 import aims.media.Media;
 import aims.media.Playable;
-import aims.screen.fxml.CartScreenController;
 
 // MediaStore là lớp con của JPanel, 
 // được sử dụng để hiển thị thông tin của một sản phẩm trong cửa hàng.
@@ -78,6 +78,7 @@ public class MediaStore extends JPanel {
 					} catch (PlayerException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, "Error: " + e1.getMessage(), "Playback Error", JOptionPane.ERROR_MESSAGE);
 					} 
 				}
 			});

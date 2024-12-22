@@ -31,7 +31,7 @@ public class Store {
 	        Book book3 = new Book("Python","IT", "manh hung", 29.99f);
 	        Book book4 = new Book("C","IT", "manh hung", 40f);
 	        
-	        Track track1 = new Track("Intro", 3);
+	        Track track1 = new Track("Intro", 0);
 	        Track track2 = new Track("Main", 5);
 	        CompactDisc cd = new CompactDisc("Trap Music", "DJ Khaled", 14.99f);
 	        cd.addTrack(track1);
