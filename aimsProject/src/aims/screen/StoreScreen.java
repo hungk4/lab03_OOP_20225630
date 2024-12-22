@@ -67,6 +67,13 @@ public class StoreScreen extends JFrame{
 		smUpdateStore.add(new JMenuItem("Add CD"));
 		smUpdateStore.add(new JMenuItem("Add DVD"));
 		
+		smUpdateStore.getItem(0).addActionListener(e -> {
+		    new AddBookToStoreScreen(store, this);
+		});
+		smUpdateStore.getItem(1).addActionListener(e -> {
+		    new AddCdToStoreScreen(store, this);
+		});
+		
 		menu.add(smUpdateStore);
 		menu.add(new JMenuItem("View Store"));
 		menu.add(new JMenuItem("View Cart"));
@@ -109,15 +116,24 @@ public class StoreScreen extends JFrame{
 //	Mỗi ô trong lưới được hiển thị bằng một MediaStore.	
 	JPanel createCenter() {
 		JPanel center = new JPanel();
-		center.setLayout(new GridLayout(3, 3, 2, 2));
+		center.setLayout(new GridLayout(5, 2, 2, 2)); // 5 hang, 2 cot, gap giua 2 cot va 2 hang la 2
 		
 		ArrayList<Media> mediaInStore = store.getItemsInStore();
 		int limit = Math.min(mediaInStore.size(), 9); // Chỉ hiển thị tối đa 9 sản phẩm
-		for(int i = 0; i < limit; i++) {
+		for(int i = 0; i < mediaInStore.size(); i++) {
 			MediaStore cell = new MediaStore(mediaInStore.get(i), cart);
 			center.add(cell);
 		}
 		return center;
 	}
+	
+	public void updateCenter() {
+	    Container container = getContentPane();
+	    container.remove(1); // Xóa panel trung tâm hiện tại (vị trí 1 là center trong BorderLayout)
+	    container.add(createCenter(), BorderLayout.CENTER); // Tạo và thêm panel trung tâm mới
+	    revalidate(); // Cập nhật lại giao diện
+	    repaint();    // Vẽ lại giao diện
+	}
+
 	
 }
