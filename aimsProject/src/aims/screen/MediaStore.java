@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import aims.cart.Cart;
+import aims.exception.PlayerException;
 import aims.media.Media;
 import aims.media.Playable;
 import aims.screen.fxml.CartScreenController;
@@ -72,7 +73,12 @@ public class MediaStore extends JPanel {
 					playDialog.add(playLabel);
 					playDialog.setVisible(true);
 					
-					((Playable) media).play(); 
+					try {
+						((Playable) media).play();
+					} catch (PlayerException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} 
 				}
 			});
 			container.add(playButton);

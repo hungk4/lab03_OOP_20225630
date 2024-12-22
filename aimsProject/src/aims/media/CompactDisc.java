@@ -2,6 +2,8 @@ package aims.media;
 
 import java.util.ArrayList;
 
+import aims.exception.PlayerException;
+
 public class CompactDisc extends Disc implements Playable{
 	private String artist;
 	private ArrayList<Track> tracks;
@@ -55,12 +57,20 @@ public class CompactDisc extends Disc implements Playable{
 	}
 	
 	@Override
-	public void play() {
-		System.out.println("Playing CompactiDisc: " + this.getTitle());
-		System.out.println("Number of tracks: " + tracks.size());
-		for(Track track : tracks) {
-			track.play();
-		}
+	public void play() throws PlayerException {
+		if (this.getLength() <= 0) {
+            System.err.println("ERROR: CD length is non-positive");
+            throw new PlayerException("ERROR: CD length is non-positive");
+        }
+
+        try {
+            for (Track track : tracks) {
+                track.play(); // Nếu độ dài track không hợp lệ, sẽ ném PlayerException
+            }
+        } catch (PlayerException e) {
+            System.err.println("PlayerException occurred during track playback: " + e.getMessage());
+            throw e; // Ném lại ngoại lệ PlayerException nếu xảy ra trong track
+        }
 	}
 	
     @Override
